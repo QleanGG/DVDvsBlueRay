@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        body {
+            overflow: hidden;
+            background-color: gray;
+        }
+        button {
+            padding: 10px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img style="position: absolute;" width="300px" src="./dvd.png" id="img1">
+    <img style="position: absolute;" width="300px" src="./Bluray.png" id="img2">
+
+    <script>
+        let top1 = 0, left1 = 0, top2 = 199, left2 = 1600
+        let distanceTop = 0.8, distanceLeft = 1.48;
+        let distanceTop2 = 0.8, distanceLeft2 = 1.48;
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
+
+        const move1 = () => {
+            top1 += distanceTop;
+            left1 += distanceLeft;
+            img1.style.top = `${top1}px`;
+            img1.style.left = `${left1}px`;
+            if (top1 >= window.screen.height - 364 || top1 <= 0) {
+                distanceTop = -distanceTop;
+            }
+            if (left1 >= window.screen.width - 320  || left1 <= 0) {
+                distanceLeft = -distanceLeft;
+            }
+        }
+
+        const move2 = () => {
+            top2 += distanceTop2;
+            left2 += distanceLeft2;
+            img2.style.top = `${top2}px`;
+            img2.style.left = `${left2}px`;
+            if (top2 >= window.screen.height - 364 || top2 <= 0) {
+                distanceTop2 = -distanceTop2;
+            }
+            if (left2 >= window.screen.width - 320  || left2 <= 0) {
+                distanceLeft2 = -distanceLeft2;
+            }
+        }
+
+
+            setInterval(move1, 2);
+            setInterval(move2, 2);
+    </script>
+</body>
+
+</html>
